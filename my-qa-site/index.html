@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QA Practice Site</title>
+  </head>
+  <body>
+    <div id="app" style="max-width: 450px; margin: 50px auto; font-family: sans-serif;">
+      <h2 style="text-align: center;">QA Practice: Secure Portal</h2>
+      
+      <div id="message" data-testid="status-message" style="display: none; margin-bottom: 15px; padding: 10px; border-radius: 4px; text-align: center;"></div>
+
+      <form id="login-form" style="padding: 20px; border: 1px solid #bdc3c7; border-radius: 8px;">
+        <h3 style="margin-top: 0;">Access Portal</h3>
+        <div style="margin-bottom: 15px;">
+          <label for="email">Email:</label><br>
+          <input type="email" id="email" data-testid="email-input" required style="width: 100%; box-sizing: border-box; padding: 8px;" />
+        </div>
+        
+        <div style="margin-bottom: 15px;">
+          <label for="password">Password:</label><br>
+          <input type="password" id="password" data-testid="password-input" required style="width: 100%; box-sizing: border-box; padding: 8px;" />
+        </div>
+        
+        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+          <button type="submit" id="login-btn" data-testid="login-button" style="flex: 1; padding: 10px; background-color: #3498db; color: white; border: none; border-radius: 4px; cursor: pointer;">Log In</button>
+          
+          <button type="button" id="signup-nav-btn" data-testid="signup-nav-button" style="flex: 1; padding: 10px; background-color: #2c3e50; color: white; border: none; border-radius: 4px; cursor: pointer;">Create New User</button>
+        </div>
+        
+        <div style="margin-top: 15px; text-align: center;">
+          <button type="button" id="reset-btn" data-testid="reset-button" style="background: none; border: none; color: #3498db; text-decoration: underline; cursor: pointer;">Forgot Password?</button>
+        </div>
+      </form>
+
+      <div id="registration-screen" data-testid="registration-screen" style="display: none; padding: 20px; border: 1px solid #bdc3c7; border-radius: 8px;">
+        <h3 id="reg-title" style="margin-top: 0; text-align: center;">Complete Your Profile</h3>
+        <p id="reg-subtitle" style="text-align: center; font-size: 14px; color: #7f8c8d;">Please enter your details to continue.</p>
+        
+        <div id="auth-fields" style="background-color: #f4f6f7; padding: 15px; border-radius: 4px; margin-bottom: 15px; border: 1px solid #e0e6ed;">
+          <div style="margin-bottom: 10px;">
+            <label for="reg-email" style="font-size: 14px; font-weight: bold;">Account Email *:</label>
+            <input type="email" id="reg-email" data-testid="reg-email-input" style="width: 100%; box-sizing: border-box; padding: 5px;" />
+          </div>
+          <div style="margin-bottom: 10px;">
+            <label for="reg-password" style="font-size: 14px; font-weight: bold;">Password (Min 6 chars) *:</label>
+            <input type="password" id="reg-password" data-testid="reg-password-input" style="width: 100%; box-sizing: border-box; padding: 5px;" />
+          </div>
+          <div>
+            <label for="reg-confirm-password" style="font-size: 14px; font-weight: bold;">Confirm Password *:</label>
+            <input type="password" id="reg-confirm-password" data-testid="reg-confirm-password-input" style="width: 100%; box-sizing: border-box; padding: 5px;" />
+          </div>
+        </div>
+
+        <div style="margin-bottom: 10px;">
+          <label for="first-name" style="font-size: 14px; font-weight: bold;">First Name *:</label>
+          <input type="text" id="first-name" data-testid="firstName-input" style="width: 100%; box-sizing: border-box; padding: 5px;" required />
+        </div>
+
+        <div style="margin-bottom: 10px;">
+          <label for="last-name" style="font-size: 14px; font-weight: bold;">Last Name *:</label>
+          <input type="text" id="last-name" data-testid="lastName-input" style="width: 100%; box-sizing: border-box; padding: 5px;" required />
+        </div>
+
+        <div style="margin-bottom: 10px;">
+          <label for="phone-number" style="font-size: 14px;">Phone Number:</label>
+          <input type="tel" id="phone-number" data-testid="phone-input" style="width: 100%; box-sizing: border-box; padding: 5px;" />
+        </div>
+
+        <hr style="margin: 15px 0; border: 0; border-top: 1px solid #eee;">
+        
+        <div style="margin-bottom: 10px;">
+          <label for="city" style="font-size: 14px;">City:</label>
+          <input type="text" id="city" data-testid="city-input" style="width: 100%; box-sizing: border-box; padding: 5px;" />
+        </div>
+
+        <div style="display: flex; gap: 10px; margin-bottom: 15px;">
+          <div style="flex: 1;">
+            <label for="state" style="font-size: 14px;">State:</label>
+            <input type="text" id="state" data-testid="state-input" style="width: 100%; box-sizing: border-box; padding: 5px;" />
+          </div>
+          <div style="flex: 1;">
+            <label for="zip" style="font-size: 14px;">Zip Code:</label>
+            <input type="text" id="zip" data-testid="zip-input" style="width: 100%; box-sizing: border-box; padding: 5px;" />
+          </div>
+        </div>
+
+        <button id="save-profile" data-testid="save-profile-btn" style="width: 100%; padding: 10px; background-color: #27ae60; color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: bold;">Save & Enter Dashboard</button>
+        <button id="cancel-reg-btn" type="button" style="width: 100%; padding: 10px; background-color: transparent; color: #7f8c8d; border: none; cursor: pointer; margin-top: 5px;">Cancel</button>
+      </div>
+      
+      <div id="dashboard" data-testid="dashboard-screen" style="display: none; text-align: center; margin-top: 20px;">
+        <h1 data-testid="welcome-message" style="color: #2c3e50;">Welcome to the Dashboard!</h1>
+        
+        <div style="margin: 20px auto; padding: 15px; border: 1px solid #bdc3c7; max-width: 300px; border-radius: 8px; text-align: left; background-color: #f4f6f7;">
+          <h3 style="margin-top: 0; font-size: 16px; text-align: center; color: #2c3e50;">Current Information</h3>
+          <p style="margin: 5px 0; font-size: 14px;"><strong>Name:</strong> <span id="display-name" data-testid="display-name">Not set</span></p>
+          <p style="margin: 5px 0; font-size: 14px;"><strong>Phone:</strong> <span id="display-phone" data-testid="display-phone">Not set</span></p>
+          <p style="margin: 5px 0; font-size: 14px;"><strong>Location:</strong> <span id="display-location" data-testid="display-location">Not set</span></p>
+        </div>
+
+        <div style="margin: 20px auto; padding: 15px; border: 1px dashed #bdc3c7; border-radius: 8px; background-color: #f9f9f9;">
+          <h3 style="margin-top: 0; font-size: 16px;">Cloud Profile Picture</h3>
+          
+          <img id="profile-preview" data-testid="profile-preview" style="display: none; width: 120px; height: 120px; object-fit: cover; border-radius: 50%; border: 3px solid #3498db; margin: 0 auto 15px auto; cursor: pointer;" title="Click to change picture" />
+          
+          <input type="file" id="file-upload" data-testid="file-upload" accept="image/jpeg, image/png" style="display: none;" />
+          
+          <button id="custom-upload-btn" type="button" style="background-color: #2c3e50; color: white; padding: 8px 15px; border: none; border-radius: 4px; cursor: pointer; margin-bottom: 5px; width: 100%;">
+            📸 Choose a Picture
+          </button>
+
+          <button id="remove-picture-btn" type="button" style="display: none; background-color: #e74c3c; color: white; padding: 8px 15px; border: none; border-radius: 4px; cursor: pointer; margin-bottom: 10px; width: 100%;">
+            🗑️ Remove Picture
+          </button>
+
+          <p id="upload-status" data-testid="upload-status" style="margin: 0; font-size: 14px; font-weight: bold;"></p>
+        </div>
+
+        <!-- PDF Upload Section -->
+        <div style="margin: 20px auto; padding: 15px; border: 1px dashed #bdc3c7; border-radius: 8px; background-color: #f9f9f9;">
+          <h3 style="margin-top: 0; font-size: 16px;">Upload Document (PDF)</h3>
+          
+          <input type="file" id="pdf-upload" data-testid="pdf-upload" accept="application/pdf" style="display: none;" />
+          
+          <button id="custom-pdf-btn" type="button" style="background-color: #8e44ad; color: white; padding: 8px 15px; border: none; border-radius: 4px; cursor: pointer; margin-bottom: 5px; width: 100%;">
+            📄 Select PDF File
+          </button>
+          <p id="pdf-file-name" style="font-size: 12px; color: #7f8c8d; text-align: center; margin-top: 5px;"></p>
+          
+          <button id="upload-pdf-btn" type="button" style="display: none; background-color: #27ae60; color: white; padding: 8px 15px; border: none; border-radius: 4px; cursor: pointer; margin-top: 5px; width: 100%;">
+            ⬆️ Upload PDF to Cloud
+          </button>
+
+          <p id="pdf-upload-status" data-testid="pdf-upload-status" style="margin: 5px 0 0 0; font-size: 14px; font-weight: bold; text-align: center;"></p>
+          
+          <div id="pdf-link-container" style="display: none; text-align: center; margin-top: 10px;">
+            <a id="pdf-view-link" href="#" target="_blank" style="color: #3498db; text-decoration: underline; font-weight: bold; display: block; margin-bottom: 10px;">👁️ View Uploaded PDF</a>
+            <button id="remove-pdf-btn" type="button" style="background-color: #e74c3c; color: white; padding: 8px 15px; border: none; border-radius: 4px; cursor: pointer; width: 100%;">
+              🗑️ Remove Document
+            </button>
+          </div>
+        </div>
+
+        <div style="display: flex; gap: 10px; justify-content: center; margin-top: 20px;">
+          <button id="edit-profile" data-testid="edit-profile-btn" style="background-color: #3498db; color: white; padding: 8px 15px; border: none; border-radius: 4px; cursor: pointer;">Edit Profile Details</button>
+          <button id="logout" data-testid="logout-button" style="background-color: #e74c3c; color: white; padding: 8px 15px; border: none; border-radius: 4px; cursor: pointer;">Secure Log Out</button>
+        </div>
+        
+        <div style="margin-top: 30px; border-top: 1px solid #eee; padding-top: 20px;">
+          <button id="delete-account-btn" style="background-color: transparent; color: #95a5a6; border: 1px solid #95a5a6; padding: 5px 10px; border-radius: 4px; cursor: pointer; font-size: 12px;">Delete Account</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Delete Account Modal -->
+    <div id="delete-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); justify-content: center; align-items: center; z-index: 1000;">
+      <div style="background: white; padding: 20px; border-radius: 8px; width: 300px; box-sizing: border-box;">
+        <h3 style="margin-top: 0;">Confirm Deletion</h3>
+        <p style="font-size: 13px; color: #7f8c8d;">Enter credentials to permanently delete your account and all data.</p>
+        <input type="email" id="del-email" placeholder="Email" style="width: 100%; margin-bottom: 10px; padding: 8px; box-sizing: border-box;">
+        <input type="password" id="del-pass" placeholder="Password" style="width: 100%; margin-bottom: 10px; padding: 8px; box-sizing: border-box;">
+        <div style="display: flex; gap: 10px;">
+          <button id="confirm-delete-btn" style="flex: 1; padding: 10px; background: #e74c3c; color: white; border: none; border-radius: 4px; cursor: pointer;">Delete Permanently</button>
+          <button id="cancel-delete-btn" style="flex: 1; padding: 10px; background: #bdc3c7; color: white; border: none; border-radius: 4px; cursor: pointer;">Cancel</button>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
