@@ -22,6 +22,8 @@ test('test', async ({ page }) => {
   await page.getByTestId('phone-input').fill('401333333');
   await page.getByTestId('city-input').click();
   await page.getByTestId('city-input').fill('Coventry');
+  await page.getByTestId('state-input').click();
+  await page.getByTestId('state-input').selectOption('NY');
   await page.getByTestId('zip-input').dblclick();
   await page.getByTestId('zip-input').fill('02816');
   await page.getByTestId('save-profile-btn').click();

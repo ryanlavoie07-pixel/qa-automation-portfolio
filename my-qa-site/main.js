@@ -23,6 +23,16 @@ const signupNavBtn = document.getElementById('signup-nav-btn');
 const cancelRegBtn = document.getElementById('cancel-reg-btn');
 const authFieldsDiv = document.getElementById('auth-fields');
 
+// NEW: Real-time input filters to prevent typing letters
+document.getElementById('phone-number').addEventListener('input', function (e) {
+  // \D means "anything that is not a digit". We replace non-digits with nothing.
+  this.value = this.value.replace(/\D/g, '').slice(0, 10); 
+});
+
+document.getElementById('zip').addEventListener('input', function (e) {
+  this.value = this.value.replace(/\D/g, '').slice(0, 5);
+});
+
 let currentPdfPath = null; // Track PDF path globally for login & deletion
 
 function showMessage(text, isError = false) {
@@ -160,9 +170,22 @@ const saveProfileBtn = document.getElementById('save-profile');
 saveProfileBtn.addEventListener('click', async () => {
   const firstNameVal = document.getElementById('first-name').value.trim();
   const lastNameVal = document.getElementById('last-name').value.trim();
+  const phoneVal = document.getElementById('phone-number').value.trim();
+  const zipVal = document.getElementById('zip').value.trim();
   
   if (!firstNameVal || !lastNameVal) {
     alert("First Name and Last Name are strictly required to continue.");
+    return;
+  }
+
+  // NEW: Hard validation for Phone and Zip before saving to database
+  if (phoneVal && !/^\d{10}$/.test(phoneVal)) {
+    alert("Phone number must be exactly 10 digits and contain only numbers.");
+    return;
+  }
+
+  if (zipVal && !/^\d{5}$/.test(zipVal)) {
+    alert("Zip code must be exactly 5 digits and contain only numbers.");
     return;
   }
 
