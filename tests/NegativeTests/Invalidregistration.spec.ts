@@ -91,7 +91,7 @@ await dialog.dismiss();
   await page.getByTestId('city-input').click();
   await page.getByTestId('city-input').fill('Cranston');
   await page.getByTestId('state-input').click();
-  await page.getByTestId('state-input').fill('RI');
+  await page.getByTestId('state-input').selectOption('RI');
   await page.getByTestId('zip-input').click();
   await page.getByTestId('zip-input').fill('02920');
   await page.getByTestId('save-profile-btn').click();
